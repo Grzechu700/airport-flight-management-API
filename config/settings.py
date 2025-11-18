@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_spectacular',
-    'debug_toolbar'
+    'debug_toolbar',
+    'airport',
+    'booking',
 ]
 
 MIDDLEWARE = [
