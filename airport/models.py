@@ -10,3 +10,14 @@ class Airport(models.Model):
     class Meta:
         db_table = "airport"
         ordering = ["name"]
+
+
+class AirplaneType(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "airplane_type"
+        ordering = ["name"]
