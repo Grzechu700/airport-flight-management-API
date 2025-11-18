@@ -51,3 +51,24 @@ class Airplane(models.Model):
     class Meta:
         db_table = "airplane"
         ordering = ["name"]
+
+
+class Route(models.Model):
+    source = models.ForeignKey(
+        Airport,
+        on_delete=models.CASCADE,
+        related_name="routes_as_source",
+    )
+    destination = models.ForeignKey(
+        Airport,
+        on_delete=models.CASCADE,
+        related_name="routes_as_destination",
+    )
+    distance = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.source} -> {self.destination}"
+
+    class Meta:
+        db_table = "route"
+        ordering = ["source", "destination"]
