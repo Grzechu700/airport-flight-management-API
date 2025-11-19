@@ -18,3 +18,12 @@ class AirportSerializer(serializers.ModelSerializer):
             "closest_big_city"
         )
 
+
+class AirplaneTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AirplaneType
+        fields = (
+            "id",
+            "name",
+        )
+
