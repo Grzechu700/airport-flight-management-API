@@ -1,3 +1,5 @@
+from rest_framework.decorators import action
+from rest_framework.response import Response
 from rest_framework import viewsets
 from .models import Airport, AirplaneType, Crew, Airplane, Route, Flight
 from .serializers import (AirportSerializer,
@@ -36,3 +38,16 @@ class RouteViewSet(viewsets.ReadOnlyModelViewSet):
 class FlightViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
+
+    @action(detail=True, methods=["get"])
+    def available_seats(self, request, pk=None):
+        flight = self.get_object()
+        total_seats = flight.airplane.rows * flight.airplane.seats_in_row
+        taken_seats = flight.flight_tickets.count()
+        available_seats = total_seats - taken_seats
+
+        return Response({
+            "total_seats": total_seats,
+            "taken_seats": taken_seats,
+            "available_seats": available_seats,
+        })
