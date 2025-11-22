@@ -64,3 +64,20 @@ class RouteSerializer(serializers.ModelSerializer):
             "destination",
             "distance",
         )
+
+
+class FlightSerializer(serializers.ModelSerializer):
+    route = RouteSerializer(read_only=True)
+    airplane = AirplaneSerializer(read_only=True)
+    crews = CrewSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Flight
+        fields = (
+            "id",
+            "route",
+            "airplane",
+            "departure_time",
+            "arrival_time",
+            "crews",
+        )
