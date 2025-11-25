@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework import serializers
 from .models import Order, Ticket
 from .serializers import OrderSerializer, TicketSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
@@ -23,3 +24,9 @@ class TicketViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Ticket.objects.filter(order__user=self.request.user)
+
+    def perform_create(self, serializer):
+        order_id = self.request.data.get("order")
+        if not Order.objects.filter(id=order_id, user=self.request.user).exists():
+            raise serializers.ValidationError("You can only create tickets for your own orders")
+        serializer.save()
