@@ -37,8 +37,8 @@ class Crew(models.Model):
 
 class Airplane(models.Model):
     name = models.CharField(max_length=255)
-    rows = models.IntegerField()
-    seats_in_row = models.IntegerField()
+    rows = models.PositiveIntegerField()
+    seats_in_row = models.PositiveIntegerField()
     airplane_type = models.ForeignKey(
         AirplaneType,
         on_delete=models.CASCADE,

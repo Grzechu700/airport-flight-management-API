@@ -50,8 +50,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
-                ('rows', models.IntegerField()),
-                ('seats_in_row', models.IntegerField()),
+                ('rows', models.PositiveIntegerField()),
+                ('seats_in_row', models.PositiveIntegerField()),
                 ('airplane_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='airplanes', to='airport.airplanetype')),
             ],
             options={
