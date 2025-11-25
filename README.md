@@ -94,6 +94,23 @@ Authorization: Bearer <your_token>
 ### Available Seats Endpoint (custom action)
 ![Available seats](screenshots/available_seats.png)
 
+## Running Tests
+
+### Run all tests locally:
+```bash
+python manage.py test
+```
+
+### Run tests in Docker:
+```bash
+docker-compose run app sh -c "python manage.py test"
+```
+
+### Run specific test:
+```bash
+python manage.py test airport.tests.AirportAPITest
+```
+
 ## Technologies
 
 - Django 5.2
