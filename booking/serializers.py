@@ -27,10 +27,29 @@ class TicketSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         attrs = super(TicketSerializer, self).validate(attrs)
-        if Ticket.objects.filter(
-            flight=attrs["flight"],
-            row=attrs["row"],
-            seat=attrs["seat"],
-        ).exists():
+
+        flight = attrs["flight"]
+        row = attrs["row"]
+        seat = attrs["seat"]
+
+        if row > flight.airplane.rows:
+            raise serializers.ValidationError(
+                f"Row {row} does not exist. Airplane has only {flight.airplane.rows} rows."
+            )
+        if seat > flight.airplane.seats_in_row:
+            raise serializers.ValidationError(
+                f"Seat {seat} does not exist. Row has only {flight.airplane.seats_in_row} seats."
+            )
+
+        queryset = Ticket.objects.filter(
+            flight=flight,
+            row=row,
+            seat=seat,
+        )
+        if self.instance:
+            queryset = queryset.exclude(pk=self.instance.pk)
+
+        if queryset.exists():
             raise serializers.ValidationError("Seat already booked")
+
         return attrs
