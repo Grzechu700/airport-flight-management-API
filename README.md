@@ -12,42 +12,65 @@ REST API for managing airport flights, crews, airplanes and bookings.
 
 ## Installation
 
-### 1. Clone repository
+### Option 1: Using Docker (Recommended)
 ```bash
+# 1. Clone repository
 git clone https://github.com/Grzechu700/airport-flight-management-API.git
 cd airport-flight-management-API
-```
 
-### 2. Initialize project
-```bash
+# 2. Initialize project
 make init
+# Update .env.docker with your credentials if needed
+
+# 3. Start containers
+make docker-up
+
+# 4. In another terminal, create superuser
+docker-compose exec app python manage.py createsuperuser
 ```
 
-This will create `.env` file from `.env.sample`. Update it with your database credentials.
+Visit `http://localhost:8000/api/doc/` for API documentation.
 
-### 3. Setup virtual environment
+**To stop containers:**
 ```bash
+make docker-down
+```
+
+---
+
+### Option 2: Local Development
+```bash
+# 1. Clone repository
+git clone https://github.com/Grzechu700/airport-flight-management-API.git
+cd airport-flight-management-API
+
+# 2. Initialize project
+make init
+# Update .env with your database credentials
+
+# 3. Setup virtual environment
 python -m venv venv
 source venv/Scripts/activate  # Windows Git Bash
 make install
-```
 
-### 4. Setup database
+# 4. Create PostgreSQL database 'airport_db'
 
-Create PostgreSQL database `airport_db`, then update `.env` with your credentials.
-
-### 5. Run migrations
-```bash
+# 5. Run migrations
 make migrate
 python manage.py createsuperuser
-```
 
-### 6. Run development server
-```bash
+# 6. Run server
 make run
 ```
 
 Visit `http://127.0.0.1:8000/api/doc/` for API documentation.
+
+---
+
+## Usage
+
+- **API Documentation**: http://127.0.0.1:8000/api/doc/ (or http://localhost:8000/api/doc/ for Docker)
+- **Admin Panel**: http://127.0.0.1:8000/admin/
 
 ## Authentication
 
@@ -97,9 +120,9 @@ Authorization: Bearer <your_token>
 
 ## Running Tests
 
-### Run all tests locally:
+### Run all tests (local):
 ```bash
-python manage.py test
+make test
 ```
 
 ### Run tests in Docker:
@@ -109,7 +132,20 @@ docker-compose run app sh -c "python manage.py test"
 
 ### Run specific test:
 ```bash
-python manage.py test airport.tests.AirportAPITest
+python manage.py test tests.airport.test_models.AirportModelTest
+```
+
+## Available Make Commands
+```bash
+make help          # Show all available commands
+make init          # Initialize project (copy .env.sample to .env)
+make install       # Install dependencies
+make migrate       # Run database migrations
+make test          # Run tests
+make run           # Run development server
+make docker-up     # Start Docker containers
+make docker-down   # Stop Docker containers
+make clean         # Remove Python cache files
 ```
 
 ## Technologies
@@ -119,3 +155,4 @@ python manage.py test airport.tests.AirportAPITest
 - PostgreSQL
 - JWT Authentication
 - drf-spectacular
+- Docker
