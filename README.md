@@ -18,35 +18,36 @@ git clone https://github.com/Grzechu700/airport-flight-management-API.git
 cd airport-flight-management-API
 ```
 
-### 2. Setup virtual environment
+### 2. Initialize project
+```bash
+make init
+```
+
+This will create `.env` file from `.env.sample`. Update it with your database credentials.
+
+### 3. Setup virtual environment
 ```bash
 python -m venv venv
 source venv/Scripts/activate  # Windows Git Bash
-pip install -r requirements.txt
+make install
 ```
 
-### 3. Setup database
+### 4. Setup database
 
-Create PostgreSQL database `airport_db` and configure `.env`:
-```
-DB_NAME=airport_db
-DB_USER=postgres
-DB_PASSWORD=your_password
-DB_HOST=localhost
-DB_PORT=5432
-```
+Create PostgreSQL database `airport_db`, then update `.env` with your credentials.
 
-### 4. Run migrations
+### 5. Run migrations
 ```bash
-python manage.py migrate
+make migrate
 python manage.py createsuperuser
-python manage.py runserver
 ```
 
-## Usage
+### 6. Run development server
+```bash
+make run
+```
 
-- **API Documentation**: http://127.0.0.1:8000/api/doc/
-- **Admin Panel**: http://127.0.0.1:8000/admin/
+Visit `http://127.0.0.1:8000/api/doc/` for API documentation.
 
 ## Authentication
 
