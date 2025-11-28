@@ -127,7 +127,7 @@ make test
 
 ### Run specific test:
 ```bash
-docker-compose run app sh -c "python manage.py test tests.airport.test_models.AirportModelTest"
+make test-specific TEST=tests.airport.test_models.AirportModelTest
 ```
 
 ## Available Make Commands
@@ -141,6 +141,7 @@ make run           # Run development server
 make docker-up     # Start Docker containers
 make docker-down   # Stop Docker containers
 make clean         # Remove Python cache files
+make test-specific TEST=path.to.test  # Run specific test in Docker
 ```
 
 ## Technologies

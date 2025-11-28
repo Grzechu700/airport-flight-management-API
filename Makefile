@@ -50,3 +50,8 @@ clean:
 	find . -type f -name "*.pyc" -delete
 	find . -type f -name "*.pyo" -delete
 	@echo "✓ Cache cleaned"
+
+test-specific:
+	@echo "Running specific test in Docker..."
+	@echo "Usage: make test-specific TEST=tests.airport.test_models.AirportModelTest"
+	docker-compose run app sh -c "python manage.py test $(TEST)"
