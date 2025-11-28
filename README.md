@@ -120,19 +120,14 @@ Authorization: Bearer <your_token>
 
 ## Running Tests
 
-### Run all tests (local):
+### Run all tests:
 ```bash
 make test
 ```
 
-### Run tests in Docker:
-```bash
-docker-compose run app sh -c "python manage.py test"
-```
-
 ### Run specific test:
 ```bash
-python manage.py test tests.airport.test_models.AirportModelTest
+docker-compose run app sh -c "python manage.py test tests.airport.test_models.AirportModelTest"
 ```
 
 ## Available Make Commands

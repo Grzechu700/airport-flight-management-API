@@ -28,8 +28,8 @@ migrate:
 	@echo "✓ Migrations completed"
 
 test:
-	@echo "Running tests..."
-	python manage.py test
+	@echo "Running tests in Docker..."
+	docker-compose run app sh -c "python manage.py test"
 	@echo "✓ Tests completed"
 
 run:
