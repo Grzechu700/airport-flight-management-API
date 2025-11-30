@@ -2,7 +2,6 @@
 Test configuration file - disables rate limiting for tests only.
 This file configures the test environment without modifying project settings.
 """
-import pytest
 from django.conf import settings
 
 
