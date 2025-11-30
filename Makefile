@@ -14,8 +14,11 @@ help:
 init:
 	@echo "Initializing project..."
 	@cp .env.sample .env
+	@cp .env.docker.sample .env.docker
 	@echo "✓ Created .env file from .env.sample"
-	@echo "⚠ Please update .env with your actual database credentials"
+	@echo "✓ Created .env.docker file from .env.docker.sample"
+	@echo "⚠ Please update .env with your local database credentials"
+	@echo "⚠ Please update .env.docker with your Docker credentials (if needed)"
 
 install:
 	@echo "Installing dependencies..."

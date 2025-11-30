@@ -20,7 +20,8 @@ cd airport-flight-management-API
 
 # 2. Initialize project
 make init
-# Update .env.docker with your credentials if needed
+# This creates .env.docker from .env.docker.sample
+# Update .env.docker with your credentials if needed (default values work for Docker)
 
 # 3. Start containers
 make docker-up
@@ -133,7 +134,7 @@ make test-specific TEST=tests.airport.test_models.AirportModelTest
 ## Available Make Commands
 ```bash
 make help          # Show all available commands
-make init          # Initialize project (copy .env.sample to .env)
+make init          # Initialize project (copy .env.sample and .env.docker.sample)
 make install       # Install dependencies
 make migrate       # Run database migrations
 make test          # Run tests
