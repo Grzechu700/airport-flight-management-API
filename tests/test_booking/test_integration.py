@@ -2,8 +2,13 @@ from django.test import TestCase
 from rest_framework.test import APIClient, override_settings
 from rest_framework import status
 from django.contrib.auth import get_user_model
-from booking.models import Order, Ticket
-from airport.models import Airport, AirplaneType, Airplane, Route, Flight
+from airport.models import (
+    Airport,
+    AirplaneType,
+    Airplane,
+    Route,
+    Flight,
+)
 from django.utils import timezone
 from datetime import timedelta
 

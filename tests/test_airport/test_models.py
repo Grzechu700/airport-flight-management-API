@@ -1,6 +1,11 @@
 from django.test import TestCase
 from airport.models import (
-    Airport, AirplaneType, Crew, Airplane, Route, Flight
+    Airport,
+    AirplaneType,
+    Crew,
+    Airplane,
+    Route,
+    Flight,
 )
 from django.utils import timezone
 from datetime import timedelta

@@ -1,8 +1,17 @@
 from django.test import TestCase
-from airport.models import Airport, AirplaneType, Crew, Airplane, Route, Flight
+from airport.models import (
+    Airport,
+    AirplaneType,
+    Crew,
+    Airplane,
+    Route,
+    Flight,
+)
 from airport.serializers import (
-    AirportSerializer, AirplaneTypeSerializer, CrewSerializer,
-    AirplaneSerializer, RouteSerializer, FlightSerializer
+    AirportSerializer,
+    AirplaneSerializer,
+    RouteSerializer,
+    FlightSerializer,
 )
 from django.utils import timezone
 from datetime import timedelta

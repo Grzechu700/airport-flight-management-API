@@ -1,11 +1,11 @@
 from rest_framework import serializers
 from airport.models import (
-Airport,
-AirplaneType,
-Crew,
-Airplane,
-Route,
-Flight,
+    Airplane,
+    AirplaneType,
+    Airport,
+    Crew,
+    Flight,
+    Route,
 )
 
 

@@ -1,8 +1,18 @@
 from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 from rest_framework import status
-from airport.models import Airport, AirplaneType, Crew, Airplane, Route, Flight
-from booking.models import Order, Ticket
+from airport.models import (
+    Airplane,
+    AirplaneType,
+    Airport,
+    Crew,
+    Flight,
+    Route,
+)
+from booking.models import (
+    Order,
+    Ticket,
+)
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from datetime import timedelta

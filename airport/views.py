@@ -1,13 +1,22 @@
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import viewsets
-from .models import Airport, AirplaneType, Crew, Airplane, Route, Flight
-from .serializers import (AirportSerializer,
-                          AirplaneTypeSerializer,
-                          CrewSerializer,
-                          AirplaneSerializer,
-                          RouteSerializer,
-                          FlightSerializer,)
+from .models import (
+    Airplane,
+    AirplaneType,
+    Airport,
+    Crew,
+    Flight,
+    Route,
+)
+from .serializers import (
+    AirplaneSerializer,
+    AirplaneTypeSerializer,
+    AirportSerializer,
+    CrewSerializer,
+    FlightSerializer,
+    RouteSerializer,
+)
 
 
 class AirportViewSet(viewsets.ReadOnlyModelViewSet):
