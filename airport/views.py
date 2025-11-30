@@ -1,7 +1,7 @@
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import viewsets
-from .models import (
+from airport.models import (
     Airplane,
     AirplaneType,
     Airport,
@@ -9,7 +9,7 @@ from .models import (
     Flight,
     Route,
 )
-from .serializers import (
+from airport.serializers import (
     AirplaneSerializer,
     AirplaneTypeSerializer,
     AirportSerializer,

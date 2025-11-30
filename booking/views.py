@@ -1,7 +1,13 @@
 from rest_framework import viewsets
 from rest_framework import serializers
-from .models import Order, Ticket
-from .serializers import OrderSerializer, TicketSerializer
+from booking.models import (
+    Order,
+    Ticket,
+)
+from booking.serializers import (
+    OrderSerializer,
+    TicketSerializer,
+)
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 

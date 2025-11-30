@@ -1,5 +1,8 @@
 from rest_framework import serializers
-from .models import Order, Ticket
+from booking.models import (
+    Order,
+    Ticket,
+)
 
 
 class OrderSerializer(serializers.ModelSerializer):

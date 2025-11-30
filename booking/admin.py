@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Order, Ticket
+from booking.models import (
+    Order,
+    Ticket,
+)
 
 
 admin.site.register(Order)

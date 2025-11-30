@@ -1,6 +1,9 @@
 from django.urls import path, include
 from rest_framework import routers
-from .views import OrderViewSet, TicketViewSet
+from booking.views import (
+    OrderViewSet,
+    TicketViewSet,
+)
 
 
 router = routers.DefaultRouter()
